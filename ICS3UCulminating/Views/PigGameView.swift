@@ -20,7 +20,18 @@ struct PigGameView: View {
     
     // The 'body' property defines what the user sees on the screen.
     var body: some View {
-        VStack(spacing: 40) {
+        VStack(spacing: 30) {
+            
+            // MARK: Game Mode Selection
+            // Allows the user to choose between playing another human or the computer.
+            // This is disabled once the game has started.
+            Picker("Game Mode", selection: $viewModel.selectedMode) {
+                Text("2 Players").tag(PigGameViewModel.GameMode.humanVsHuman)
+                Text("vs Computer").tag(PigGameViewModel.GameMode.humanVsComputer)
+            }
+            .pickerStyle(.segmented)
+            .padding(.horizontal)
+            .disabled(viewModel.isComputerThinking || (viewModel.hasGameStarted && !viewModel.isGameOver))
             
             // MARK: Score Header
             // Displays the global scores for both players at the top.
@@ -37,7 +48,7 @@ struct PigGameView: View {
                 .cornerRadius(10)
                 
                 VStack {
-                    Text("Player 2")
+                    Text(viewModel.player2Name)
                         .font(.headline)
                     Text("\(viewModel.player2Score)")
                         .font(.system(size: 40, weight: .bold))
@@ -58,7 +69,7 @@ struct PigGameView: View {
                         .fontWeight(.black)
                         .foregroundColor(.green)
                 } else {
-                    Text(viewModel.isPlayer1Turn ? "Player 1's Turn" : "Player 2's Turn")
+                    Text("\(viewModel.currentPlayerName)'s Turn")
                         .font(.title2)
                         .fontWeight(.semibold)
                         .foregroundColor(viewModel.isPlayer1Turn ? .blue : .red)
@@ -101,11 +112,11 @@ struct PigGameView: View {
                         Label("Roll", systemImage: "arrow.clockwise")
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .background(viewModel.isGameOver ? Color.gray : Color.blue)
+                            .background(viewModel.isGameOver || viewModel.isComputerThinking ? Color.gray : Color.blue)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
-                    .disabled(viewModel.isGameOver)
+                    .disabled(viewModel.isGameOver || viewModel.isComputerThinking)
                     
                     Button(action: {
                         viewModel.hold()
@@ -113,11 +124,11 @@ struct PigGameView: View {
                         Label("Hold", systemImage: "tray.and.arrow.down")
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .background(viewModel.isGameOver ? Color.gray : Color.green)
+                            .background(viewModel.isGameOver || viewModel.isComputerThinking ? Color.gray : Color.green)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
-                    .disabled(viewModel.isGameOver)
+                    .disabled(viewModel.isGameOver || viewModel.isComputerThinking)
                 }
                 
                 Button(action: {
@@ -125,9 +136,10 @@ struct PigGameView: View {
                 }) {
                     Text("Reset Game")
                         .fontWeight(.semibold)
-                        .foregroundColor(.red)
+                        .foregroundColor(viewModel.isComputerThinking ? .gray : .red)
                 }
                 .padding(.top)
+                .disabled(viewModel.isComputerThinking)
             }
             .padding()
         }
