@@ -9,10 +9,6 @@
 /* Begin PBXBuildFile section */
 		57480E012FCE0A1E002D9A9C /* ICS3UCulminatingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57480E002FCE0A1E002D9A9C /* ICS3UCulminatingApp.swift */; };
 		57480E032FCE0A1E002D9A9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57480E022FCE0A1E002D9A9C /* Assets.xcassets */; };
-		57480E062FCE0A1E002D9A9C /* House.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57480E052FCE0A1E002D9A9C /* House.swift */; };
-		57480E092FCE0A1E002D9A9C /* HouseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57480E082FCE0A1E002D9A9C /* HouseListViewModel.swift */; };
-		57480E0C2FCE0A1E002D9A9C /* HousesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57480E0B2FCE0A1E002D9A9C /* HousesListView.swift */; };
-		57480E0E2FCE0A1E002D9A9C /* HouseItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57480E0D2FCE0A1E002D9A9C /* HouseItemView.swift */; };
 		57480E102FCE0A1E002D9A9C /* RELEASE.md in Resources */ = {isa = PBXBuildFile; fileRef = 57480E0F2FCE0A1E002D9A9C /* RELEASE.md */; };
 		57480E152FCE11CD002D9A9C /* PigGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57480E142FCE11CD002D9A9C /* PigGameViewModel.swift */; };
 		57480E182FCF66F9002D9A9C /* PigGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57480E172FCF66F9002D9A9C /* PigGameView.swift */; };
@@ -26,10 +22,6 @@
 		57480DFD2FCE0A1E002D9A9C /* ICS3UCulminating.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ICS3UCulminating.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57480E002FCE0A1E002D9A9C /* ICS3UCulminatingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICS3UCulminatingApp.swift; sourceTree = "<group>"; };
 		57480E022FCE0A1E002D9A9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		57480E052FCE0A1E002D9A9C /* House.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = House.swift; sourceTree = "<group>"; };
-		57480E082FCE0A1E002D9A9C /* HouseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseListViewModel.swift; sourceTree = "<group>"; };
-		57480E0B2FCE0A1E002D9A9C /* HousesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HousesListView.swift; sourceTree = "<group>"; };
-		57480E0D2FCE0A1E002D9A9C /* HouseItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseItemView.swift; sourceTree = "<group>"; };
 		57480E0F2FCE0A1E002D9A9C /* RELEASE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = RELEASE.md; sourceTree = "<group>"; };
 		57480E142FCE11CD002D9A9C /* PigGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PigGameViewModel.swift; sourceTree = "<group>"; };
 		57480E162FCE146C002D9A9C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -84,7 +76,6 @@
 		57480E042FCE0A1E002D9A9C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				57480E052FCE0A1E002D9A9C /* House.swift */,
 				57480E192FD77A6A002D9A9C /* GameRecord.swift */,
 			);
 			path = Model;
@@ -93,7 +84,6 @@
 		57480E072FCE0A1E002D9A9C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				57480E082FCE0A1E002D9A9C /* HouseListViewModel.swift */,
 				57480E142FCE11CD002D9A9C /* PigGameViewModel.swift */,
 				57480E1B2FD77B76002D9A9C /* GameHistoryViewModel.swift */,
 			);
@@ -103,8 +93,6 @@
 		57480E0A2FCE0A1E002D9A9C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				57480E0B2FCE0A1E002D9A9C /* HousesListView.swift */,
-				57480E0D2FCE0A1E002D9A9C /* HouseItemView.swift */,
 				57480E172FCF66F9002D9A9C /* PigGameView.swift */,
 				57480E1D2FD7866F002D9A9C /* PigHistoryView.swift */,
 				57480E1F2FD78FDE002D9A9C /* ScoreCardView.swift */,
@@ -185,16 +173,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57480E0E2FCE0A1E002D9A9C /* HouseItemView.swift in Sources */,
-				57480E062FCE0A1E002D9A9C /* House.swift in Sources */,
 				57480E182FCF66F9002D9A9C /* PigGameView.swift in Sources */,
 				57480E152FCE11CD002D9A9C /* PigGameViewModel.swift in Sources */,
 				57480E1E2FD7866F002D9A9C /* PigHistoryView.swift in Sources */,
 				57480E202FD78FDE002D9A9C /* ScoreCardView.swift in Sources */,
 				57480E1C2FD77B76002D9A9C /* GameHistoryViewModel.swift in Sources */,
 				57480E1A2FD77A6A002D9A9C /* GameRecord.swift in Sources */,
-				57480E0C2FCE0A1E002D9A9C /* HousesListView.swift in Sources */,
-				57480E092FCE0A1E002D9A9C /* HouseListViewModel.swift in Sources */,
 				57480E012FCE0A1E002D9A9C /* ICS3UCulminatingApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
