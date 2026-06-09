@@ -23,8 +23,17 @@ class PigGameViewModel {
     
     // MARK: - Stored properties
     
-    // The currently selected game mode. Defaults to Human vs Human.
-    var selectedMode: GameMode = .humanVsHuman
+    // The currently selected game mode.
+    // When this is changed, we automatically reset the game state.
+    var selectedMode: GameMode = .humanVsHuman {
+        didSet {
+            // Cancel any computer turn that might be running.
+            computerTurnTask?.cancel()
+            
+            // Start a fresh game whenever the mode changes.
+            reset()
+        }
+    }
     
     // These variables store the long-term score for each player.
     // They only increase when a player chooses to "Hold".
@@ -49,6 +58,13 @@ class PigGameViewModel {
     // A Boolean to track if the computer is currently taking its turn.
     // While this is true, the user interface should disable human controls.
     var isComputerThinking: Bool = false
+    
+    // This stores a reference to the computer's turn task so we can cancel it
+    // if the user resets the game or switches modes.
+    private var computerTurnTask: Task<Void, Never>?
+    
+    // A reference to the history manager so we can save records when a game ends.
+    var historyViewModel: GameHistoryViewModel?
     
     // MARK: - Computed properties
     
@@ -138,20 +154,44 @@ class PigGameViewModel {
         // Check if the current player just won the game.
         if player1Score >= 100 || player2Score >= 100 {
             isGameOver = true
+            saveGameToHistory()
         } else {
             // If no one won, switch to the other player.
             endTurn()
         }
     }
     
+    // This function creates a record of the finished game and saves it.
+    private func saveGameToHistory() {
+        // If we have a winner and a history manager is connected...
+        if let winner = winner, let historyManager = historyViewModel {
+            
+            // Create a new record with the current game details.
+            let record = GameRecord(
+                datePlayed: Date(),
+                gameMode: selectedMode == .humanVsHuman ? "2 Players" : "vs Computer",
+                winnerName: winner,
+                player1FinalScore: player1Score,
+                player2FinalScore: player2Score
+            )
+            
+            // Tell the history manager to save this record.
+            historyManager.addRecord(record)
+        }
+    }
+    
     // This function resets the game to its starting state.
     func reset() {
+        // Cancel any pending computer actions.
+        computerTurnTask?.cancel()
+        
         player1Score = 0
         player2Score = 0
         turnTotal = 0
         isPlayer1Turn = true
         lastRoll = nil
         isGameOver = false
+        isComputerThinking = false
     }
     
     // A helper function to switch turns between Player 1 and Player 2.
@@ -167,8 +207,8 @@ class PigGameViewModel {
         // 3. The game isn't already over.
         if selectedMode == .humanVsComputer && !isPlayer1Turn && !isGameOver {
             // Start the computer's turn logic.
-            // We use Task to run this asynchronously so it doesn't freeze the app.
-            Task {
+            // We store the task so we can cancel it later if needed.
+            computerTurnTask = Task {
                 await runComputerTurn()
             }
         }
@@ -185,9 +225,19 @@ class PigGameViewModel {
         // and the game hasn't ended.
         while !isPlayer1Turn && !isGameOver {
             
+            // If the task has been cancelled (e.g. by a reset or mode switch), stop immediately.
+            if Task.isCancelled {
+                break
+            }
+            
             // Wait for about 1 second so the human player can see what's happening.
             // 1,000,000,000 nanoseconds = 1 second.
             try? await Task.sleep(nanoseconds: 1_000_000_000)
+            
+            // Check cancellation again after the sleep.
+            if Task.isCancelled {
+                break
+            }
             
             // Computer strategy:
             // If the turn total is less than 20, roll again.
@@ -202,5 +252,8 @@ class PigGameViewModel {
         // Once the loop ends (either by holding or rolling a 1),
         // the computer is finished thinking.
         isComputerThinking = false
+        
+        // Clear the task reference since it's finished.
+        computerTurnTask = nil
     }
 }

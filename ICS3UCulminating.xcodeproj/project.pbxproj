@@ -16,6 +16,10 @@
 		57480E102FCE0A1E002D9A9C /* RELEASE.md in Resources */ = {isa = PBXBuildFile; fileRef = 57480E0F2FCE0A1E002D9A9C /* RELEASE.md */; };
 		57480E152FCE11CD002D9A9C /* PigGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57480E142FCE11CD002D9A9C /* PigGameViewModel.swift */; };
 		57480E182FCF66F9002D9A9C /* PigGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57480E172FCF66F9002D9A9C /* PigGameView.swift */; };
+		57480E1A2FD77A6A002D9A9C /* GameRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57480E192FD77A6A002D9A9C /* GameRecord.swift */; };
+		57480E1C2FD77B76002D9A9C /* GameHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57480E1B2FD77B76002D9A9C /* GameHistoryViewModel.swift */; };
+		57480E1E2FD7866F002D9A9C /* PigHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57480E1D2FD7866F002D9A9C /* PigHistoryView.swift */; };
+		57480E202FD78FDE002D9A9C /* ScoreCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57480E1F2FD78FDE002D9A9C /* ScoreCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		57480E142FCE11CD002D9A9C /* PigGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PigGameViewModel.swift; sourceTree = "<group>"; };
 		57480E162FCE146C002D9A9C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		57480E172FCF66F9002D9A9C /* PigGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PigGameView.swift; sourceTree = "<group>"; };
+		57480E192FD77A6A002D9A9C /* GameRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRecord.swift; sourceTree = "<group>"; };
+		57480E1B2FD77B76002D9A9C /* GameHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHistoryViewModel.swift; sourceTree = "<group>"; };
+		57480E1D2FD7866F002D9A9C /* PigHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PigHistoryView.swift; sourceTree = "<group>"; };
+		57480E1F2FD78FDE002D9A9C /* ScoreCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				57480E052FCE0A1E002D9A9C /* House.swift */,
+				57480E192FD77A6A002D9A9C /* GameRecord.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -86,6 +95,7 @@
 			children = (
 				57480E082FCE0A1E002D9A9C /* HouseListViewModel.swift */,
 				57480E142FCE11CD002D9A9C /* PigGameViewModel.swift */,
+				57480E1B2FD77B76002D9A9C /* GameHistoryViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -96,6 +106,8 @@
 				57480E0B2FCE0A1E002D9A9C /* HousesListView.swift */,
 				57480E0D2FCE0A1E002D9A9C /* HouseItemView.swift */,
 				57480E172FCF66F9002D9A9C /* PigGameView.swift */,
+				57480E1D2FD7866F002D9A9C /* PigHistoryView.swift */,
+				57480E1F2FD78FDE002D9A9C /* ScoreCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -177,6 +189,10 @@
 				57480E062FCE0A1E002D9A9C /* House.swift in Sources */,
 				57480E182FCF66F9002D9A9C /* PigGameView.swift in Sources */,
 				57480E152FCE11CD002D9A9C /* PigGameViewModel.swift in Sources */,
+				57480E1E2FD7866F002D9A9C /* PigHistoryView.swift in Sources */,
+				57480E202FD78FDE002D9A9C /* ScoreCardView.swift in Sources */,
+				57480E1C2FD77B76002D9A9C /* GameHistoryViewModel.swift in Sources */,
+				57480E1A2FD77A6A002D9A9C /* GameRecord.swift in Sources */,
 				57480E0C2FCE0A1E002D9A9C /* HousesListView.swift in Sources */,
 				57480E092FCE0A1E002D9A9C /* HouseListViewModel.swift in Sources */,
 				57480E012FCE0A1E002D9A9C /* ICS3UCulminatingApp.swift in Sources */,
